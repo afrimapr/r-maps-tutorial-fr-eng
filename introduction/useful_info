@@ -1,0 +1,15 @@
+This introduction presentation was created using the xaringan package.
+
+xaringan tips
+=============
+
+Solution to inserting afrimapr logo:
+  https://www.garrickadenbuie.com/blog/xaringan-tip-logo-all-slides/#inside-insert-logo-html
+
+useful presentation tips found here:
+  http://arm.rbind.io/slides/xaringan.html#105
+  https://garthtarr.github.io/sydney_xaringan/#1
+  
+Problem retaining formatting when knitting to html:
+  https://bookdown.org/yihui/rmarkdown/xaringan-preview.html
+    set `self_contained: true`

@@ -1,0 +1,202 @@
+---
+title: "Session 3: La Pratique"
+subtitle: "Tutoriel de afrimapr à userR! 2021"
+date: "07 Juillet 2021"
+output:
+  pdf_document:
+    toc: true
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## A. Grandes lignes de cette session pratique
+
+Cette session est pratique et vous mets au défi d'utiliser des données que vous avez apportées vous-même ou que vous avez trouvées en ligne. L'objectif est de développer l'habitude de travailler avec des données différentes de celles qui ont été convenablement préparées pour vous durant les sessions précédentes. Faire des cartes avec des données réelles peut parfois être compliqué surtout dans les processus de nettoyage, importation ou manipulation. Nous voulons vous aider à gérer ces différents types de problèmes que vous pourrez éventuellement rencontrer. Même en tant qu'instructeurs, nous faisons aussi face à ces difficultés lorsque nous travaillons avec des données qui n'ont pas été préalablement préparées. En ce sens, il nous est impossible d'anticiper tous les problèmes et nous ne pouvons pas vous garantir d'être à mesure de régler tous les problèmes dans cette session. Cependant, nous pourrons vous donner des suggestions personnelles qui vous aideront.
+
+**Nous vous mettons au défi de créer une carte sur laquelle des données sont représentées par des couleurs et/ou symboles différents afin de communiquer leurs charactéristiques spatiales.**
+
+Par exemple, vous verrez peut-être que certaines valeurs sont plus élevées dans certaines zones que d'autres ou qu'il n'y a aucune tendance particulière.
+
+
+### Objectifs d'apprentissage
+
+Au sorti de cette session, vous aurez acquis de l'expérience en création de cartes avec vos propres données. Ceci peut être des données que vous avez apportées vous-même, que vous avez trouvées en ligne ou que nous vous avons données. De façon plus spécifique, vous serez à mésure de:
+
+* décider de la manière de manipuler vos propres données pour faire une carte
+* importer vos propres données dans R pour les manipuler et les cartographier
+* avoir des idées sur la résolution des problèmes complexes inévitables en cartographie
+* penser à comment présenter des données sur une carte afin de communiquer un message (par ex. les classifications et les palettes de couleur)
+* savoir où trouver des données publiques
+
+
+### Les options pratiques
+
+Notre suggestion pour vous au cours de cette session (par ordre de préférence) est de créer une carte à partir de:
+
+1. données de coordonnées que vous avez apportées vous-même
+2. données de coordonnées que vous avez trouvées en ligne
+3. données que nous vous avons fournies
+4. données qui font référence à des noms de lieux (Ceci va requerir l'utilisation de packages que nous n'avons pas couverts aujourd'hui. Veuillez voir la section H pour plus d'informations.)
+
+À la fin de la session, nous aimerions que vous nous fassiez parvenir une image de vos résultats par email (ou vous pourrez les enregistrer dans votre projet RStudio Cloud). Ce n'est pas grave si vous n'avez pas une carte complètement conçue. Nous compilerons tous ces résultats dans un document que nous enverrons à tous les participants par la suite.
+
+
+### Les questions à poser avant la création d'une carte
+
+1. Que voulez-vous présenter sur une carte?
+2. Quel est le format des données? (ex. .csv, .xls, .shp, autre)?
+3. Pour les fichiers .csv ou .txt, quels sont les noms des colonnes contenant les longitudes et latitudes?
+4. Si vous voulez comparer les données de plusieurs lieux, qu'allez-vous utiliser pour visualiser les différences (ex. taille des points, couleurs, etc)?
+5. Voulez vous ajouter d'autres données à la carte afin de donner un peu plus de contexte (ajouter des strates, d'autres types d'objets)?
+6. Quel package de cartographie voulez-vous utiliser pour commencer? Nous avons parlé de `tmap` et `mapview` dans ce tutoriel (il y en a d'autres).
+
+
+### Recommandations pour les résolutions de problèmes (Google est votre ami)
+
+Lorsqu'on utilise des données réelles, rencontrer des erreurs et des échecs est inévitable. Les programmeurs et les analystes des données en rencontrent très fréquemment, même ceux qui ont de l'expérience. Nous ne pouvons pas vous enseigner comment éviter ces erreurs mais nous pouvons vous montrer comment nous nous y prenons lorsque nous les avons. Il est utile de se rappeler que toutes les fois que vous rencontrez un problème, il est très fort probable que quelqu'un d'autre dans le monde ait déjà rencontrer ce même problème avant vous. La beauté de coder, de l'internet et de R plus particulièrement est que quelqu'un a probablement posté la solution quelque part. Il vous faut juste la trouver.
+
+Pour trouver des solutions, nous recommandons que votre premier pas soit Google ou votre moteur de recherche préféré.
+
+1. Si vous avez un message d'erreur, copiez-le sur Google
+
+2. Si vous voulez faire quelque chose et vous ne savez pas comment, tapez votre question sur Google
+
+Lorsque vous recherchez des réponses à vos questions ou des solutions à vos problèmes, votre challenge sera que vous aurez beaucoup d'autres résultats qui seront peut-être pas très utiles, vieux, ou incompréhensibles pour vous, et vous devrez les filtrer. Ceci arrive à tout le monde.
+
+Notre recommandation est de **se focaliser sur les réponses récentes (celles qui ont moins d'un an)**. Le monde des logiciels open-source change tout le temps, donc les solutions plus vieilles qu'un an ne fonctionnent peut-être plus ou ne sont peut-être plus les meilleures.
+
+
+## B. Les données
+
+Nous suggérons que vous utilisiez une de ces sources de données (par ordre de préférence):
+
+1. Coordonnées que vous apportez vous-même (consultez la [Section D](#d.-créer-une-carte-avec-ses-propres-coordonnées))
+
+2. Coordonnées que vous trouvez en ligne (consultez la section sur [les sources de données en ligne](#les-sources-de-données-en-ligne) et la [Section E](#e.-coordonnées-trouvées-en-ligne))
+
+3. Des données que nous avons fournies (consultez la [Section F](#f.-des-données-que-nous-avons-fournies))
+
+4. Des données qui font référence à des noms de lieux (consultez la [Section H](#h.-données-faisant-référence-à-des-noms-de-lieux))
+
+
+### les sources de données en ligne
+
+Si vous n'avez pas apporté vos propres données, nous vous proposons quelques sources de données en ligne qui peuvent être cartographiées en R.
+
+Nous vous conseillons de ne pas prendre trop de temps à rechercher les données parfaites. Plutôt, trouvez quelque chose qui vous intéresse et passez plus de temps à essayer de faire une carte avec.
+
+
+#### Humanitarian Data Exchange (HDX) [https://data.humdata.org/](https://data.humdata.org/)
+
+Un site internet utile avec des bases de données sur les actions humanitaires qu'on peut rechercher. Vous pouvez effectuer une recherche en tapant le nom d'un pays avec l'option `Geodata` qui vous permet d'améliorer vos recherches
+
+
+#### rspatialdata [https://rspatialdata.github.io/](https://rspatialdata.github.io/)
+
+Un site interet qui offre des tutoriels et qui guide vers des données spatiales qui peuvent être cartographiées en R. Certains de ces tutoriels sont un peu plus avancés que ce qui nous voyons ici.
+
+
+## C. Charger les données sur RStudio Cloud
+
+Afin d'utiliser vos propres données sur RStudio Cloud, vous aurez tout d'abord besoin de charger les données de votre ordinateur vers le cloud en cliquant sur le bouton `Upload` sous l'onglet des fichiers (`Files`) (se trouvant en bas à droite de votre écran par défaut). Nous suggérons que vous créiez un dossier `data` dans le même dossier à partir duquel vous exécutez votre script R (dans ce tutoriel il s'agit de `for_learners/data`) et que vous sauvegardiez les données à charger dans le nouveau dossier `data`.
+
+
+## D. Créer une carte avec ses propres coordonnées
+
+### Étapes suggérées
+
+Rappelez-vous de ceci: afin de cartographier ses données dans R, nous avons besoin de suivre ces 3 étapes:
+
+1. importer le fichier de données dans R (astuce: le package `readr` contient la fonction `read_csv`)
+
+2. convertir le dataframe en object spatial (avec le package `sf`) et spécifier le `crs` (astuce: `sf::st_as_sf`)
+
+3. créer une carte interactive rapide avec l'objet `sf` en utilisant `mapview`
+
+![**Les étapes pour créer une carte**](../../for_instructors/images/steps.jpg)
+
+
+## E. Coordonnées trouvées en ligne
+
+Nous vous conseillons de ne pas prendre trop de temps à rechercher les données parfaites. Plutôt, trouvez quelque chose qui vous intéresse et passez plus de temps à essayer de faire une carte avec.
+
+Téléchargez ces données sur votre ordinateur et suivez les étapes pour les charger sur RStudio Cloud. Ensuite essayez de créer un carte en utilisant les étapes suivantes:
+
+
+### Étapes suggérées
+
+Rappelez-vous de ceci: afin de cartographier ses données dans R, nous avons besoin de suivre ces 3 étapes:
+
+1. importer le fichier de données dans R (astuce: le package `readr` contient la fonction `read_csv`)
+
+2. convertir le dataframe en object spatial (avec le package `sf`) et spécifier le `crs` (astuce: `sf::st_as_sf`)
+
+3. créer une carte interactive rapide avec l'objet `sf` en utilisant `mapview`
+
+
+
+## F. Des données que nous avons fournies
+
+Si vous n'avez pas vos propres données ou si vous n'en avez pas trouvé en ligne, nous avons préparé un exemple de données nommé `health_demo.csv` dans le dossier `for_learners/data` dans le projet RStudio Cloud (c'est une portion des données [Organisation Mondiale de la Santé (OMS) (2019) Un base de données spatiales sur les infracstructures de santé gérées par le secteur public en Afrique sub-saharienne](https://www.who.int/malaria/areas/surveillance/public-sector-health-facilities-ss-africa/en/)).
+
+
+### Étapes suggérées
+
+Rappelez-vous de ceci: afin de cartographier ses données dans R, nous avons besoin de suivre ces 3 étapes:
+
+1. importer le fichier de données dans R (astuce: le package `readr` contient la fonction `read_csv`)
+
+2. convertir le dataframe en object spatial (avec le package `sf`) et spécifier le `crs` (astuce: `sf::st_as_sf`)
+
+3. créer une carte interactive rapide avec l'objet `sf` en utilisant `mapview`
+
+
+## G. Étapes additionnelles
+
+Si vous avez un peu plus de temps dans ce tutoriel, vous pouvez essayer ces étapes additionnelles. N'hésitez pas à contacter les formateurs pour tout problème éventuel que vous rencontrerez.
+
+1. Essayez d'explorer le contenu de l'objet (astuce: `head`, `str`, `names`, `class`)
+
+2. Utilisez les différents arguments de `mapview` (ex. `zcol`, `label`, `cex`)
+
+3. Que se passe-t-il lorsque vous omettez l'argument `crs` de `mapview`?
+
+4. Essayez de créer une carte interactive avec `tmap`qui est similaire à celle faite avec `mapview` (astuce: `tmap_mode("plot")` pour une carte statique et `tmap_mode("view")` pour une carte interactive)
+
+5. Ajoutez des strates à votre carte à partir des objets se trouvant dans `afrilearndata` (ex. `africapitals` `afriadmin` `africontinent`)
+
+
+## H. Données faisant référence à des noms de lieux
+
+Si vos données n'ont que des noms de régions ou lieux spécifiques sans coordonnées, vous avez besoin de les fusionner avec des données spatiales qui ont des coordonnées. Pour apprendre comment fusionner des données non-spatiales à des données spatiales, consultez le tutoriel en ligne sur la [fusion](https://andysouth.shinyapps.io/join-admin/#section-outline-of-this-tutorial); aussi disponible via [afrilearnr](https://github.com/afrimapr/afrilearnr/tree/main/inst/tutorials/join-admin).
+
+
+Nous vous donnons un exemple concis ici:
+
+
+```{r join-example, message=FALSE, warning=FALSE}
+
+library(mapview)
+library(sf)
+library(dplyr)
+library(afrilearndata)
+
+# 1. dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   language=c("French","English"))
+
+# 2. fusionner le dataframe à l'objet spatial
+africa_df <- dplyr::left_join(x = africountries, 
+                              y = mydf, 
+                              by = c("name_long" = "country")
+                              )
+# 3. visualiser les données fusionnées
+mapview(africa_df, zcol="language")
+
+```
+
+**Il est à noter que les cartes interactives ne s'afficheront pas dans un document statique PDF si vous exécutez la commande `knit`**

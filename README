@@ -1,0 +1,42 @@
+
+Welcome to the useR! 2021 afrimapr tutorial.
+============================================
+
+Here is a link to a collaborative document to use during the tutorial (and to keep afterwards) to share names, ideas, questions, resources, etc:
+
+https://docs.google.com/document/d/1nsD1pi-F88oJ8Dr2zA522G2liI5C1yQxL73QZVeZNWE/edit#
+
+
+After the tutorial, please can you fill in this feedback form to help us improve future tutorials:
+
+  English:
+  -------
+  https://docs.google.com/forms/d/1Wz13K_JIa2b4g1lfa1eocqLvrzuLXjMUnT1cQWOggHw/edit
+  
+  French:
+  ------
+  https://docs.google.com/forms/d/1gbFD7AGm3FKa1HE-J1GDfiw1BILKiZoxkjyMBJDfHsY/edit
+
+
+=================
+Folders and files
+=================
+
+- In this R project, you will find folders for both English and French, depending on your preference.
+
+- In the 'for_learners' folder, each session has an R script - these contain all the code you will need to run through the tutorial. Included in this is code to open an html of the tutorial in the RStudio viewer pane, where you will see the full tutorial content including explanatory text.
+
+- There are separate folders containing these .html files for the tutorial sessions, as well as the .pdf and .Rmd files.
+
+- The 'packages_and_data.R' script in the project folder contains all the packages you will need if you run this tutorial locally (i.e. not in RStudio Cloud).
+
+- the `session_info.txt` file in the project folder contains the packages and package versions used in this tutorial.
+
+- The 'data' folder contains data to use for the practical part of the tutorial in session three if you have not brought your own data or if your data is not in the correct format (e.g. does not include geospatial information).
+
+
+==================
+Community meetups
+==================
+
+afrimapr has launched a monthly virtual meetup for people working on mapping African data in R. The community meets online on the 4th Wednesday of each month to discuss their work, solutions, ideas, resources, and more. To learn more or receive the calendar invitation with connection details, please join our afrimapr Google Group at https://groups.google.com/g/afrimapr/ and follow us on Twitter @afrimapr

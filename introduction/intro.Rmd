@@ -1,0 +1,363 @@
+---
+title: "Entry level R maps from African data | Cartes simples avec des données africaines" 
+author: "afrimapr"
+date: "07 July 2021"
+output:
+  xaringan::moon_reader:
+    includes:
+      after_body: insert-logo.html
+    self_contained: true
+    css: ["useR", "useR-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: center, middle
+
+# Welcome!     |      Bienvenue!
+
+
+---
+
+## Meet your teaching team
+
+
+_**English**_
+
+**Instructors:** Andy South, Laurie Baker
+
+**Helpers:** Anelda van der Walt, Shelmith Kariuki, Anne Treasure
+
+<br>
+<br>
+
+_**French**_
+
+**Instructor:** Ghislain Nono Gueye
+
+**Helpers:** Ahmadou Dicko, Bryan Tegomoh
+
+---
+
+## Meet your fellow learners
+
+```{r library packages, echo=FALSE, message=FALSE}
+
+library(tmap) 
+library(tidyverse)
+
+```
+
+```{r set tmap, echo=FALSE, message=FALSE}
+tmap_mode("view") 
+```
+
+```{r learners map, fig.dim=c(4.8, 4.8), out.width="100%", echo=FALSE, message=FALSE, warning=FALSE}
+
+# read in data
+df <- read_csv("data/countries.csv")
+
+## Mapping
+# Count the number of registrations per country
+my_countries <- df %>% 
+   rename(name = "country") %>% 
+   mutate(name = as_factor(name)) %>% 
+   group_by(name) %>% 
+   tally(name = "count")
+
+# Load the World data set from tmap
+data(World)
+
+# Join the dataframe created above onto the World dataset to get country shapes
+map_data <- World %>% left_join(my_countries, by = "name")
+
+tm_shape(map_data) +
+   tm_polygons("count", 
+               palette="-magma", 
+               contrast=.7, 
+               id="name", 
+               title="Number of participants")
+
+```
+
+---
+
+## Collaborative document
+
+Please note we have a _**shared google document**_ where you can ask questions, share ideas, etc. 
+
+Please also take a minute to introduce yourselves here.
+
+The link has been pasted in the Zoom chat channel:
+https://docs.google.com/document/d/1nsD1pi-F88oJ8Dr2zA522G2liI5C1yQxL73QZVeZNWE
+
+---
+
+## Schedule
+
+Topic |   | Duration
+ :-- | --- | :-:
+   |   | (minutes)
+Welcome & Introduction  |   | 20
+Navigating RStudio  |   | 15
+Tutorial Session 1  |   | 50
+Break  |   | 15
+Tutorial Session 2  |   | 50
+Break  |   | 15
+Tutorial Session 3  |   | 50
+Wrap up  |   | 5
+Goodbyes  |   | 5
+
+---
+
+class: center, middle
+
+# Session one
+
+## 'Introduction to spatial data'
+
+---
+
+## What you will learn
+
+- Loading R packages and data
+
+- What is spatial data
+
+- Creating static and interactive maps
+
+- Overlaying several data types on a map
+
+- Working with colour palettes on maps
+
+---
+
+## Example data we'll look at
+
+- points (capital cities) 
+- lines (highway network) 
+- polygons (country boundaries) 
+- gridded or raster data (population density)
+
+```{r library_packages, echo=FALSE, message=FALSE}
+
+#### LOAD PACKAGES AND DATA ----
+
+library(sf) 
+library(raster) 
+library(afrilearndata)
+library(tmap)
+library(rgdal)
+library(mapview)
+
+```
+
+```{r set tmap plot, echo=FALSE, message=FALSE}
+tmap_mode("plot") 
+```
+
+```{r tmap-first-view, fig.height=3, dev='svg', echo=FALSE}
+
+tmap::tm_shape(afripop2020) +
+  tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+  tm_shape(africountries) +
+  tm_borders("white", lwd = .5) +
+  tm_shape(afrihighway) +
+  tm_lines(col = "red") + 
+  tm_shape(africapitals) +
+  tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+  tm_legend(show = FALSE)
+```
+
+---
+
+### Example static maps we'll create
+
+.pull-left[
+
+```{r tmap-polygons-1c, fig.dim=c(4.8, 4.8), out.width="100%", echo=FALSE, message=FALSE}
+
+tm_shape(africountries) +
+  tm_polygons(col="income_grp", border.col = "white")
+
+```
+
+]
+
+.pull-right[
+
+```{r tmap-raster1b, fig.dim=c(4.8, 4.8), out.width="100%", echo=FALSE, message=FALSE}
+
+tmap_mode('plot') 
+tm_shape(afripop2020) +
+  tm_raster(breaks=c(0,2,20,200,2000,25000))
+
+```
+
+]
+
+---
+### Example interactive maps we'll create
+
+
+```{r set tmap plot2, echo=FALSE, message=FALSE}
+tmap_mode("view") 
+```
+
+```{r tmap-interactive, fig.dim=c(4.8, 4.8), out.width="100%", echo=FALSE, message=FALSE, warning=FALSE}
+
+tmap::tm_shape(afripop2020) +
+  tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+  tm_shape(africountries) +
+  tm_borders("white", lwd = .5) +
+  tm_text("iso_a3", size = "AREA") +
+  tm_shape(afrihighway) +
+  tm_lines(col = "blue") + 
+  tm_shape(africapitals) +
+  tm_symbols(col = "green",  scale = .6 ) +
+  tm_legend(show = FALSE)
+
+```
+
+---
+
+class: center, middle
+
+# Session two
+
+## 'Reading my spatial data into R'
+
+---
+
+## What you will learn
+
+- Read a variety of spatial data file types into R 
+
+- Use `mapview` for quick interactive maps
+
+- Options for making `mapview` maps more useful
+
+
+---
+
+## Interactive maps with `mapview`
+
+
+```{r mapview-options-airports, fig.height=4, dev='svg', echo=FALSE, message=FALSE}
+
+# 1. read into dataframe
+filename <- system.file("extdata", "afriairports.csv", package="afrilearndata", mustWork=TRUE)
+mydf <- readr::read_csv(filename)
+
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
+
+# or can select a single country:
+# mydf <- mydf[which(mydf$country_name == "Burkina Faso"), ]
+
+# 2. convert to sf object
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("longitude_deg", "latitude_deg"),
+                     crs=4326)
+
+# 3. quick interactive plot
+#mapview(mysf)
+mapview(mysf, zcol='type', label='name', cex=2)   
+
+```
+
+---
+
+class: center, middle
+
+# Session three
+
+## Practical
+
+---
+
+## What you will do
+
+- Make a map from data of your own choice
+
+- Learn where to find help 
+
+- Share a screenshot or the code you used to create your map
+
+---
+
+## How this tutorial will work
+
+Following this introduction, you will go to breakout rooms (English / French)
+for the tutorial:
+
+Topic |   | Duration
+ :-- | --- | :-:
+   |   | (minutes)
+Navigating RStudio  |   | 15
+Tutorial Session 1  |   | 50
+Break  |   | 15
+Tutorial Session 2  |   | 50
+Break  |   | 15
+Tutorial Session 3  |   | 50
+Wrap up  |   | 5
+
+
+Then back into the main training room for goodbyes
+
+---
+
+## Zoom
+
+- After this introduction, when you are asked to join a break out room, click yes!
+
+- At the end of the tutorial, the break out rooms will close and you will automatically be transferred back into the main room
+
+- If you need help or have a question during the tutorial, please _**write a message in the zoom chat channel**_ - there are helpers and tutors in each break out room who will help you
+
+- Please also note we have a _**shared google document**_ where you can ask questions, share ideas, etc. Please also take a minute to introduce yourselves here (the link has been pasted in the Zoom chat channel)
+https://docs.google.com/document/d/1nsD1pi-F88oJ8Dr2zA522G2liI5C1yQxL73QZVeZNWE
+
+
+
+---
+
+## Code of Conduct
+
+Please note that we will be following the useR!2021 Code of Conduct to provide a safe and inclusive conference experience for everyone regardless of age, gender, sexual orientation, disability, physical appearance, race, or religion (or lack thereof) (Details here: https://user2021.r-project.org/participation/coc/)
+
+Anyone who violates this Code of Conduct will be reported to useR!2021, and removed from the tutorial.
+
+---
+
+class: center, middle
+
+# afrimapr community meetups
+
+---
+
+## afrimapr community meetups
+
+**Please join us!**
+
+afrimapr has launched a monthly virtual meetup for people working on mapping African data in R. 
+
+The community meets online on the 4th Wednesday of each month to discuss their work, solutions, ideas, resources, and more. 
+
+To learn more or receive the calendar invitation with connection details, please join our afrimapr Google Group at https://groups.google.com/g/afrimapr/ and follow us on Twitter @afrimapr
+
+---
+
+## afrimapr
+
+- Our website (http://afrimapr.org)
+
+- Find us on GitHub (https://github.com/afrimapr)
+
+- Follow us on Twitter (@afrimapr)
+
+- Google group for discussion (https://groups.google.com/g/afrimapr)
+
+

@@ -1,0 +1,59 @@
+Country,Admin1,Facility name,Facility type,Ownership,Lat,Long,LL source
+Angola,Bengo,Hospital Barra Do Dande,Hospital,Govt,-8.6560,13.4919,Google Earth
+Angola,Cuanza Norte,Camame Health Centre,Centro de Saude,MoH,-8.9833,14.9833,Other
+Benin,Atlantique,Tori Bossito Centre de Sante d Arrondissement,Centre de Sante d Arrondissement,Public,6.5030,2.1441,Geonames
+Benin,Borgou,Maison de La Joie CNR Centre Medical,Centre Medical ,FBO,9.8015,2.9936,Combination
+Botswana,Central,Mahalapye District Hospital,District Hospital,Public,-23.1296,26.7962,Other
+Botswana,Southern,Tshimologo Clinic,Clinic,Public,-24.6031,24.7238,Other
+Burkina Faso,Boucle du Mouhoun,Bagassi Centre de Sante Et de Promotion Sociale,Centre de Sante et de Promotion Sociale,MoH,11.7487,-3.3042,Digitized from online map
+Burkina Faso,Sud Ouest,Yerefoula Centre de Sante Et de Promotion Sociale,Centre de Sante et de Promotion Sociale,MoH,10.4811,-3.5839,Digitized from online map
+Burundi,Bubanza,Ciya Centre de Sante,Health Centre,FBO,-3.0390,29.4230,GPS
+Burundi,Bujumbura Mairie,Butere Centre de Sante,Health Centre,Public,-3.3308,29.3430,GPS
+Cameroon,Adamawa,Islamique Centre de Sante Integre,Centre de Sante Integre,MoH,6.4608,13.2693,Digitized from online map
+Cameroon,Centre,Ballong I Centre de Sante Integre,Centre de Sante Integre,MoH,4.2768,11.6574,Digitized from online map
+Cape Verde,Sal,Santa Maria Postos Sanitarios,Postos Sanitarios,Public,16.6001,-22.9036,Digitized from online map
+Cape Verde,Santiago,Achada de Santo Antonio Centro de Saude,Centro de Saude,Public,14.9112,-23.5185,Digitized from online map
+Central African Republic,Bangui,AEVISF Centre de Sante C,Centre de Sante C,Prive a but non lucratif,4.4068,18.5641,Combination
+Central African Republic,Equateur,Cantonnier Centre de Sante B,Centre de Sante B,Public,5.9355,14.6056,Other
+Chad,Barh El Gazel,Salal Centre de Sante,Health Centre,MoH,14.8417,17.2250,Other
+Chad,Batha,Abouhadjilidj Centre de Sante,Health Centre,MoH,13.3682,17.7924,Google Earth
+Comoros,Grande Comore,Tsidje Postes de Sante,Poste de Sante,MoH,-11.7007,43.2703,Google Earth
+Comoros,Moheli,Fomboni Centre Hospitalier Regional,Centre Hospitalier Regional,MoH,-12.2879,43.7475,Google Earth
+Congo,Pool,Voka Centre de Sante Integre,Centre de Sante Integre,MoH,-4.6711,14.6736,Geonames
+Congo,Sangha,Garnison Centre de Sante Integre,Centre de Sante Integre,MoH,1.4845,15.7839,Combination
+Cote d Ivoire,Bas Sassandra,Adebem Centre de Sante Rural,Centre de Sante Rural,Public,5.4716,-5.8373,Digitized from online map
+Democratic Republic of the Congo,Bas Uele,Zobia Centre de Sante,Centre de Sante,Publique,2.9691,25.9339,Google Earth
+Democratic Republic of the Congo,Congo Central, R Camp Re Djaf Centre de Sante de Reference,Centre de Sante,Publique,-5.8347,13.4628,GPS
+Djibouti,Obock,Waddi Health Post,Health Post,MoH,12.1779,42.9791,Digitized from online map
+Djibouti,Tadjourah,Adaylou Health Post,Health Post,MoH,11.8895,42.7743,Digitized from online map
+Equatorial Guinea,Litoral,Litoral 6,Health Centre,,1.8449,9.8001,Digitized from online map
+Equatorial Guinea,Malabo Island,Baney District Hospital,District Hospital,,3.7054,8.9045,Digitized from online map
+Eritrea,Anseba,St Lucha Health Centre,Health Centre,MoH,15.8883,38.4509,GPS
+Eritrea,Debub,Adi Bezehans Health Station,Health Station,MoH,15.0601,38.7610,GPS
+eSwatini,Hhohho,St Marys Clinic,Clinic without Maternity,FBO/NGO,-26.4508,31.1937,GPS
+eSwatini,Lubombo,Bholi Clinic,Clinic without Maternity,MoH,-26.8276,31.9274,GPS
+Ethiopia,Afar,Yalo Health Centre,Health Centre,,12.3580,39.8759,GPS
+Ethiopia,Amhara,Abahoch Clinic,Clinic,MoH,10.4380,38.5703,Digitized from online map
+Ghana,Ashanti,Zambrama Community Clinic,Clinic,MoH,7.5202,-1.4201,GPS
+Kenya,Migori,Yago Dispensary,Dispensary,MoH,-0.8653,34.5702,GPS
+Kenya,Mombasa,AHF Soko Clinic,Clinic,NGO,-4.0415,39.6833,Google Earth
+Madagascar,Sava,Vohemar Health Centre,Health Centre,Public,-13.3500,50.0000,GPS
+Madagascar,Sofia,Ambahivahy Health Post,Health Post,Public,-15.3000,48.4167,GPS
+Malawi,Central,Wimbe Health Centre,Health Centre,MoH,-12.9912,33.6870,GPS
+Malawi,Northern,Atupele Community Hospital,Community Hospital,FBO,-9.7350,33.8374,GPS
+Mali,Bamako,Yuma Medicale Clinique,Clinic,,12.5815,-7.9998,GPS
+Mali,Gao,Abakoira Community Health Centre,Community Health Centre,,17.0347,-1.5703,GPS
+Mozambique,Cabo Delgado,Tororo Posto de Saude,Posto de Saude,,-12.5958,40.1522,GPS
+Mozambique,Gaza,25 de Setembro Centro de Saude Urbano B,Centro de Saude Urbano B,,-24.3073,32.6514,GPS
+Namibia,Hardap,Stampriet Clinic,Clinic,MoHSS,-24.3510,18.3890,GPS
+Namibia,Kavango East,Andara Clinic,Clinic,MoHSS,-18.0599,21.4422,GPS
+Nigeria,Adamawa,Zumo Primary Health Clinic,Clinic,,9.8607,12.9468,GPS
+Nigeria,Akwa Ibom,Abak Itenge Health Post,Health Post,,4.9797,7.7917,Other
+Rwanda,West,Yove Health Centre,Health Centre,Public,-2.4066,29.1992,GPS
+Sao Tome and Principe,Sao Tome,Agua Grande Postos de Saude 1,Posto de Saude,,0.3819,6.7117,Digitized from online map
+Senegal,Dakar,Zac Mbao Poste de Sante,Poste de Sante,Public,14.7345,-17.3282,Combination
+Senegal,Diourbel,Aguiyaye Poste de Sante,Poste de Sante,Public,14.6667,-16.5833,Other
+Seychelles,Anse Aux Pins,Anse Aux Pins Health Centre,Health Centre,MoH,-4.6899,55.5235,Google Earth
+South Africa,Gauteng,Mofolo South Clinic,Clinic,Local authority,-26.2579,27.8862,GPS
+South Africa,Western Cape,Overberg Clinic,Clinic,MoH,-34.4149,19.2908,GPS
+Zimbabwe,Matabeleland North,Lupote Clinic,Clinic,Local authority,-18.5128,26.9642,GPS
