@@ -1,6 +1,7 @@
 
 # Welcome to the afrimapr tutorial : Entry level R maps from African data.
 
+# Bienvenue dans le tutoriel afrimapr : Cartes simples avec des données africaines
 
 This repository contains materials in French & English to support a 4 hour + tutorial that can be led or self guided.
 
@@ -40,10 +41,10 @@ Read gradually through the tutorial in the **Viewer** tab. When you come to code
 
 The R file **1_tutorial_code_session_one.R**, that you accessed before, contains just the code sections of the tutorial so you can also use this to copy & paste code into the console.
 
-In the 'for_learners' folder, each session has an R script - these contain all the code you will need to run through the tutorial. 
-
 
 ### 6. repeat for sessions 2 & 3
+
+Sessions 2 & 3 can be run similarly by running the first two lines of the files **2_tutorial_code_session_two.R** & **3_tutorial_code_session_three_SOLUTIONS.R**
 
 
 
